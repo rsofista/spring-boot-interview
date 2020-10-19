@@ -3,6 +3,8 @@ package br.com.compasso.steffen.lucas.springbootinterview.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,11 +15,12 @@ import br.com.compasso.steffen.lucas.springbootinterview.enums.SexEnum;
 @Entity
 public class Client {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String name;
 
+  @Enumerated(EnumType.STRING)
   private SexEnum sex = SexEnum.UNDEFINED;
 
   private Date birthDate;

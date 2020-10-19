@@ -11,11 +11,19 @@ import javax.persistence.OneToMany;
 @Entity
 public class State {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String name;
 
   @OneToMany
   private List<City> cities;
+
+  public Long getId() {
+    return this.id;
+  }
+
+  public String getName() {
+    return this.name;
+  }
 }

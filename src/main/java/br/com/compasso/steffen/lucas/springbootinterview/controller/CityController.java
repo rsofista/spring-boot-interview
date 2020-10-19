@@ -54,6 +54,5 @@ public class CityController {
       System.out.println(e.getMessage());
       return ResponseEntity.unprocessableEntity().build();
     }
-
   }
 }

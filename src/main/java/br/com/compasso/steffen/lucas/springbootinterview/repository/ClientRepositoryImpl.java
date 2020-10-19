@@ -1,5 +1,6 @@
 package br.com.compasso.steffen.lucas.springbootinterview.repository;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
 
+import br.com.compasso.steffen.lucas.springbootinterview.dto.CreateClientDto;
 import br.com.compasso.steffen.lucas.springbootinterview.model.City;
 import br.com.compasso.steffen.lucas.springbootinterview.model.Client;
 
@@ -22,7 +24,7 @@ public class ClientRepositoryImpl implements ClientRepositoryCustom {
   private EntityManager entityManager;
 
   @Override
-  public List<Client> findByMultiple(String name, String stateName) {
+  public List<Client> findByDto(CreateClientDto dto) throws ParseException {
     CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
     CriteriaQuery<Client> query = cb.createQuery(Client.class);
     Root<Client> root = query.from(Client.class);
@@ -32,14 +34,22 @@ public class ClientRepositoryImpl implements ClientRepositoryCustom {
     
     List<Predicate> predicates = new ArrayList<>();
     
-    if (name != null && !name.isEmpty()) {
-      predicates.add(cb.and(cb.equal(root.get("name"), name)));
+    if (dto.getName() != null && !dto.getName().isEmpty()) {
+      predicates.add(cb.and(cb.equal(root.get("name"), dto.getName())));
     }
     
-    if (stateName != null && !stateName.isEmpty()) {
-      Join<Client, City> joinState = root.join(ClientEntityType.getDeclaredSingularAttribute("currentCity", City.class));
+    if (dto.getBirthDate() != null) {
+      predicates.add(cb.and(cb.equal(root.get("birthDate"), dto.getBirthDate())));
+    }
 
-      predicates.add(cb.and(cb.equal(joinState.get("name"), stateName)));
+    if (dto.getSex() != null) {
+      predicates.add(cb.and(cb.equal(root.get("sex"), dto.getSex())));
+    }
+
+    if (dto.getCurrentCityId() != null) {
+      Join<Client, City> joinCity = root.join(ClientEntityType.getDeclaredSingularAttribute("currentCity", City.class));
+
+      predicates.add(cb.and(cb.equal(joinCity.get("id"), dto.getCurrentCityId())));
     }
 
     query.select(root).where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
