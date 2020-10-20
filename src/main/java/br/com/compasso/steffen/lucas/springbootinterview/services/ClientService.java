@@ -1,6 +1,5 @@
 package br.com.compasso.steffen.lucas.springbootinterview.services;
 
-import java.lang.StackWalker.Option;
 import java.text.ParseException;
 import java.util.Optional;
 
@@ -20,10 +19,10 @@ import javassist.NotFoundException;
 @Service
 public class ClientService {
   @Autowired
-  CityRepository cityRepository;
+  private CityRepository cityRepository;
 
   @Autowired
-  ClientRepository clientRepository;
+  private ClientRepository clientRepository;
 
   public Client createFromDto(CreateClientDto clientDto) throws NotFoundException, ParseException {
     Client client = clientDto.asEntity();
@@ -41,15 +40,17 @@ public class ClientService {
     return this.clientRepository.save(client);
   }
 
-  public void updateClient(Long id, @Valid UpdateClientDto clientDto) {
+  public void updateClient(Long id, @Valid UpdateClientDto clientDto) throws NotFoundException {
     Optional<Client> clientOpt = this.clientRepository.findById(id);
 
-    if (clientOpt.isPresent()) {
-      Client client = clientOpt.get();
-
-      client.setName(clientDto.getName());
-
-      this.clientRepository.save(client);
+    if (!clientOpt.isPresent()) {
+      throw new NotFoundException("Cliente "+id+" não encontrado");
     }
+
+    Client client = clientOpt.get();
+
+    client.setName(clientDto.getName());
+
+    this.clientRepository.save(client);
   }
 }

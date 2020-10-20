@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import br.com.compasso.steffen.lucas.springbootinterview.dto.TokenDto;
 import br.com.compasso.steffen.lucas.springbootinterview.model.User;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 

@@ -28,6 +28,21 @@ public class Client {
   @ManyToOne
   private City currentCity;
 
+  public Client() {
+
+  }
+
+  public Client(String name, SexEnum sex, Date birthDate) {
+    this.name = name;
+    this.sex = sex;
+    this.birthDate = birthDate;
+  }
+
+  @Override
+  public String toString() {
+    return "["+super.toString()+" => id: "+this.id+", name:"+this.name+", birthDate:"+this.birthDate+", currentCity:"+this.currentCity+"]";
+  }
+  
   public Long getId() {
     return this.id;
   }

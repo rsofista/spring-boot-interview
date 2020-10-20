@@ -1,13 +1,15 @@
 package br.com.compasso.steffen.lucas.springbootinterview;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootInterviewApplicationTests {
+public class SpringBootInterviewApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
+		assertThat(true).isTrue();
 	}
-
 }

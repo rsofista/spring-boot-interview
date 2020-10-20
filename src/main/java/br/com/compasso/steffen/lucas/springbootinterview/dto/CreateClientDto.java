@@ -20,6 +20,17 @@ public class CreateClientDto {
   @NotNull
   private Long currentCityId;
 
+  public CreateClientDto(String name, SexEnum sex, Date birthDate, Long currentCityId) {
+    this.name = name;
+    this.sex = sex;
+    this.birthDate = birthDate;
+    this.currentCityId = currentCityId;
+  }
+
+  public CreateClientDto() {
+
+  }
+
   public Client asEntity() throws ParseException {
     Client client = new Client();
 

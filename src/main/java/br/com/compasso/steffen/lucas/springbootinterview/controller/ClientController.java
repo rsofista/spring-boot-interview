@@ -1,7 +1,6 @@
 package br.com.compasso.steffen.lucas.springbootinterview.controller;
 
 import java.text.ParseException;
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -40,8 +39,6 @@ public class ClientController {
 
   @GetMapping("/clients")
   public ResponseEntity<ClientsDto> getClients(CreateClientDto qry) throws ParseException {
-  //public ResponseEntity<ClientDto> getClients(ClientDto qry) throws ParseException {
-    //return ResponseEntity.ok().body(qry);
     ClientsDto result = new ClientsDto();
 
     result.setClients(this.clientRepository.findByDto(qry));
@@ -56,7 +53,11 @@ public class ClientController {
 
   @PutMapping("/clients/{id}")
   public ResponseEntity<?> putClientsId(@PathVariable("id") Long id, @RequestBody() @Valid UpdateClientDto clientDto) {
-    this.clientService.updateClient(id, clientDto);
+    try {
+      this.clientService.updateClient(id, clientDto);
+    } catch (NotFoundException e) {
+      return ResponseEntity.notFound().build();
+    }
 
     return ResponseEntity.ok().build();
   }
