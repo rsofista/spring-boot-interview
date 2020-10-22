@@ -12,13 +12,13 @@
 * [Licence](#license)
 
 ## General info
-This project is a simple crud of clients and their respective cities. It aims to show the maintener's proficience with the Spring Boot Java Framwork.
-	
+This project is a simple crud of clients and their respective cities. It aims to show the maintener's proficience with the Spring Boot Java Framework.
+
 ## Technologies
 Project is created with:
 * Java: 11
 * Spring boot: 2.3.4.RELEASE
-* Maven
+* Maven: 3.6.3
 	
 ## Setup and run
 To run this project, install it locally using maven:
@@ -32,7 +32,7 @@ Or just let your IDE solve the dependencies and run it for you.
 
 ## Endpoints
 
-After running the application a swagger documentation is generated at http://localhost:8080/swagger-ui.html where you can see all the endpois for adding, updating and deleting stuff.
+After running the application, a Swagger documentation is generated at http://localhost:8080/swagger-ui.html where you can see all the endpois for adding, updating and deleting stuff.
 
 Every request needs a JWT token, to get one make a POST request to /auth passing the username and password (by default it has the user "lucas" with password "123456")
 
