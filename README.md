@@ -5,6 +5,10 @@
 * [Technologies](#technologies)
 * [Setup and run](#setup-and-run)
 * [Endpoints](#endpoints)
+---
+* [Contributing](#contributing)
+* [History](#history)
+* [Credits](#credits)
 * [Licence](#license)
 
 ## General info
@@ -63,11 +67,29 @@ Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJici5jb20uY29tcGFzc28uc3RlZ
 
 Use the awesomely auto-generated documentation by Swagger to know every endpoint and parameters you can use.
 
+---
+
+## Contributing
+ 
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+ 
+## History
+ 
+Version 0.0.1-SNAPSHOT (2020-10-22) - defining the main functionalities
+ 
+## Credits
+ 
+Lead Developer - Lucas Steffen
+
 ## License
  
 The MIT License (MIT)
 
-Copyright (c) 2015 Chris Kibble
+Copyright (c) 2020 Lucas Steffen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
